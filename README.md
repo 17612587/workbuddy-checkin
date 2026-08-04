@@ -58,15 +58,20 @@ workbuddy-checkin/
 
 ## 🚀 小白一键使用
 
-不想敲命令？直接复制下面这段话，发给你的 WorkBuddy / CodeBuddy，让它自动帮你下载安装：
+不想敲命令？**直接复制下面这一整段话，粘到 WorkBuddy / CodeBuddy 对话框里发送**，它会自动下载、安装并创建好每日签到自动化，一步到位：
 
 ```
-帮我在 ~/.workbuddy/skills/workbuddy-checkin 下安装这个签到 Skill，从 GitHub 下载：https://github.com/17612587/workbuddy-checkin
+请从这个 GitHub 仓库下载并安装签到 Skill：https://github.com/17612587/workbuddy-checkin
+安装完成后，帮我创建一个每天早上 9 点自动执行该 Skill 签到的自动化任务（WorkBuddy 每日签到）。
 ```
 
-安装完成后：
-1. 直接对话「帮我每天签到」即可触发自动化的每日签到
-2. 打开 WorkBuddy → 左侧「自动化」→ 找到「WorkBuddy 每日签到」→ 开启「推送到自动化企微通知 bot」开关，即可每天收到企微推送
+发完这条就完成了。之后想每天收到企业微信推送，只需：
+
+1. 打开 WorkBuddy → 左侧「自动化」
+2. 找到「WorkBuddy 每日签到」自动化，进入编辑
+3. 开启**「推送到自动化企微通知 bot」**开关
+
+> 脚本本身不含通知功能，企微推送开关需手动打开一次（见上方）。
 
 ## 依赖
 
