@@ -1,0 +1,10 @@
+# Python 缓存（编译字节码，非源码，可被反编译，勿提交）
+__pycache__/
+*.pyc
+*.pyo
+
+# 本地环境/凭据相关（理论上不会出现在技能目录内，保险起见）
+webhook.txt
+mcp_url.txt
+todo_userid.txt
+*.logged-out
