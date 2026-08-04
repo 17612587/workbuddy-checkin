@@ -56,6 +56,18 @@ workbuddy-checkin/
 └── README.md                       # 本文件
 ```
 
+## 🚀 小白一键使用
+
+不想敲命令？直接复制下面这段话，发给你的 WorkBuddy / CodeBuddy，让它自动帮你下载安装：
+
+```
+帮我在 ~/.workbuddy/skills/workbuddy-checkin 下安装这个签到 Skill，从 GitHub 下载：https://github.com/17612587/workbuddy-checkin
+```
+
+安装完成后：
+1. 直接对话「帮我每天签到」即可触发自动化的每日签到
+2. 打开 WorkBuddy → 左侧「自动化」→ 找到「WorkBuddy 每日签到」→ 开启「推送到自动化企微通知 bot」开关，即可每天收到企微推送
+
 ## 依赖
 
 - Python 3.x（标准库即可，无需安装第三方包）
