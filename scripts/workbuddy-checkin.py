@@ -247,7 +247,6 @@ def main():
         streak = result.get("streak_days") or "-"
         act = (activity or {}).get("activity_name", "") or "-"
 
-        print("自动化任务【WorkBuddy 每日签到】")
         print(f"{icon} {status_text}")
         print(f"• 本次签到获得：{today_cr} 积分")
         print(f"• 累计签到获得：{total_cr} 积分")
