@@ -13,6 +13,12 @@ BASE_URL = "https://www.codebuddy.cn"
 URL = f"{BASE_URL}/v2/billing/meter/daily-checkin"
 STATUS_PATHS = ("/v2/billing/meter/checkin-activity-status", "/v2/billing/meter/checkin-status")
 BALANCE_URL = f"{BASE_URL}/v2/billing/meter/get-user-resource"
+SUMMARY_URL = f"{BASE_URL}/billing/meter/get-user-resource-summary"
+# 网关会拦截 urllib 默认的 "Python-urllib/x.y" UA（返回 403），需伪装成浏览器
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+)
 
 
 class NoRedirects(HTTPRedirectHandler):
@@ -89,6 +95,9 @@ def build_headers(credentials):
         "Authorization": f"Bearer {token}",
         "Accept": "application/json",
         "Content-Type": "application/json",
+        "User-Agent": USER_AGENT,
+        "Referer": f"{BASE_URL}/",
+        "Origin": BASE_URL,
     }
     optional = {
         "uid": ("X-User-Id",),
@@ -202,7 +211,11 @@ def fetch_activity(headers):
 
 
 def fetch_balance(headers):
-    """查询真实账户余额（get-user-resource 接口）。"""
+    """查询真实账户余额。
+
+    主路径：get-user-resource 的 TotalDosage。
+    回退：get-user-resource-summary，累加各套餐包的 CycleRemainCapacity。
+    """
     try:
         body = request_json(BALANCE_URL, headers)
         resp = (
@@ -210,10 +223,33 @@ def fetch_balance(headers):
             if body.get("code") == 0
             else None
         )
-        if isinstance(resp, dict):
+        if isinstance(resp, dict) and resp.get("TotalDosage") is not None:
             return resp.get("TotalDosage")
     except Exception:
         pass
+
+    try:
+        body = request_json(SUMMARY_URL, headers)
+        data = body.get("data") if body.get("code") == 0 else None
+        if isinstance(data, dict):
+            total = 0
+            matched = False
+            for package in data.get("Packages") or []:
+                if not isinstance(package, dict):
+                    continue
+                raw = package.get("CycleRemainCapacity")
+                if raw is None:
+                    continue
+                try:
+                    total += int(float(raw))
+                    matched = True
+                except (TypeError, ValueError):
+                    continue
+            if matched:
+                return total
+    except Exception:
+        pass
+
     return None
 
 
