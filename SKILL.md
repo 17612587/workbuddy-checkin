@@ -1,6 +1,13 @@
 ---
 name: workbuddy-checkin
-description: 使用当前 WorkBuddy 或 CodeBuddy CN 账号签到（含本次获得/累计获得/真实余额三字段）。用户要求签到、打卡、check in 时使用。
+display_name: WorkBuddy 每日签到
+display_name_en: WorkBuddy Daily Check-in
+description: 使用当前 WorkBuddy 或 CodeBuddy CN 账号签到（含本次获得、累计获得、当前余额三字段）。用户要求签到、打卡、check in 时使用。
+description_zh: 使用当前 WorkBuddy 或 CodeBuddy CN 账号完成每日签到，输出本次获得、累计获得、当前余额三个字段，支持配合 WorkBuddy 自动化每天定时签到并推送结果。
+description_en: Automates daily check-in for the current WorkBuddy or CodeBuddy CN account and reports credits earned today, total credits and current balance. Works with scheduled automations.
+category: 效率工具
+version: 1.0.0
+author: 17612587
 ---
 
 # WorkBuddy 签到
