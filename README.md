@@ -67,11 +67,28 @@ python3 <skill-directory>/scripts/workbuddy-checkin.py
 ```
 daily-credits-checkin/
 ├── SKILL.md                        # 技能说明（WorkBuddy Skill 入口）
-├── scripts/
-│   └── workbuddy-checkin.py        # 签到脚本（唯一核心文件）
+├── README.md                       # 本文件
 ├── .gitignore                      # 排除 __pycache__ 等非源码文件
-└── README.md                       # 本文件
+├── sync_to_skill.py                # 开发辅助：把本目录同步到 WorkBuddy 技能目录
+└── scripts/
+    └── workbuddy-checkin.py        # 签到脚本（唯一核心文件）
 ```
+
+## 本地开发与同步
+
+本目录可同时作为**开发副本**使用：
+
+1. 直接修改 `scripts/workbuddy-checkin.py` 或 `SKILL.md`
+2. 本地测试：`python scripts/workbuddy-checkin.py`
+3. 测试通过后，运行同步脚本把改动写入 WorkBuddy 实际加载的技能目录：
+
+   ```sh
+   python sync_to_skill.py
+   ```
+
+`sync_to_skill.py` 会自动从 `SKILL.md` 的 front-matter 读取技能名，只复制有变化的文件，并做 Python 语法校验。
+
+> 技能目录（`~/.workbuddy/skills/daily-credits-checkin/`）是**部署副本**，由同步脚本写入，请勿直接手改。
 
 ## 依赖
 
