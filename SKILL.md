@@ -15,7 +15,7 @@ author: 17612587
 用户明确要求签到后，直接运行，不要先读脚本：
 
 ```sh
-python3 <skill-directory>/scripts/workbuddy-checkin.py
+python3 <skill-directory>/scripts/daily-credits-checkin.py
 ```
 
 脚本会直接输出格式化的中文签到结果（含本次获得 / 累计获得 / 真实余额）。只回复一次：将脚本输出的中文结果原样返回给用户。
@@ -37,7 +37,7 @@ python3 <skill-directory>/scripts/workbuddy-checkin.py
 - **执行命令**：
 
   ```sh
-  python3 <skill-directory>/scripts/workbuddy-checkin.py
+  python3 <skill-directory>/scripts/daily-credits-checkin.py
   ```
 
 - **自动化 Prompt**（原样填入，不要改写）：
@@ -45,7 +45,7 @@ python3 <skill-directory>/scripts/workbuddy-checkin.py
   ```
   执行签到任务。运行以下命令：
 
-  <skill-directory>/scripts/workbuddy-checkin.py
+  <skill-directory>/scripts/daily-credits-checkin.py
 
   然后只做一件事：把脚本在终端输出的内容，从以「✅」开头的那一行开始、到「---」分隔符之前结束，原样作为企业微信消息发出（平台会自动在开头显示「自动化任务【WorkBuddy 每日签到】」作为头部，无需你再加）。
 

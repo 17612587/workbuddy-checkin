@@ -39,7 +39,7 @@ WorkBuddy / CodeBuddy CN 每日签到 Skill，支持三字段输出：**本次�
 ### 手动执行
 
 ```sh
-python3 <skill-directory>/scripts/workbuddy-checkin.py
+python3 <skill-directory>/scripts/daily-credits-checkin.py
 ```
 
 ### 自动化定时签到
@@ -71,15 +71,15 @@ daily-credits-checkin/
 ├── .gitignore                      # 排除 __pycache__ 等非源码文件
 ├── sync_to_skill.py                # 开发辅助：把本目录同步到 WorkBuddy 技能目录
 └── scripts/
-    └── workbuddy-checkin.py        # 签到脚本（唯一核心文件）
+    └── daily-credits-checkin.py    # 签到脚本（唯一核心文件）
 ```
 
 ## 本地开发与同步
 
 本目录可同时作为**开发副本**使用：
 
-1. 直接修改 `scripts/workbuddy-checkin.py` 或 `SKILL.md`
-2. 本地测试：`python scripts/workbuddy-checkin.py`
+1. 直接修改 `scripts/daily-credits-checkin.py` 或 `SKILL.md`
+2. 本地测试：`python scripts/daily-credits-checkin.py`
 3. 测试通过后，运行同步脚本把改动写入 WorkBuddy 实际加载的技能目录：
 
    ```sh

@@ -6,7 +6,7 @@
 --------
 1. 在本目录（工作区里的 daily-credits-checkin\\）直接改代码；
 2. 本地测试，例如：
-       python scripts\\workbuddy-checkin.py
+       python scripts\\daily-credits-checkin.py
 3. 测试没问题后，运行本脚本把改动同步到技能目录：
        python sync_to_skill.py
 4. 技能目录才是 WorkBuddy 真正加载的那份，同步后立即生效。
@@ -86,7 +86,8 @@ def main():
         os.makedirs(dst_dir, exist_ok=True)
 
     changed, same = [], []
-    for rel, src in sorted(collect(SRC_DIR).items()):
+    src_map = collect(SRC_DIR)
+    for rel, src in sorted(src_map.items()):
         dst = os.path.join(dst_dir, rel)
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         if os.path.isfile(dst) and md5(src) == md5(dst):
@@ -100,6 +101,16 @@ def main():
     for rel in same:
         print(f"    = 未变 {rel}")
 
+    # 清理部署副本里已不存在的陈旧文件（例如源码里的文件被改名/删除）
+    removed = []
+    for rel in collect(dst_dir):
+        if rel in src_map:
+            continue
+        os.remove(os.path.join(dst_dir, rel))
+        removed.append(rel)
+    for rel in removed:
+        print(f"  ✘ 删除陈旧文件 {rel}")
+
     # 语法校验
     for rel in collect(SRC_DIR):
         if rel.endswith(".py"):
@@ -111,8 +122,9 @@ def main():
                 return 1
 
     print("-" * 60)
-    if changed:
-        print(f"同步完成：{len(changed)} 个文件已更新，{len(same)} 个未变。")
+    if changed or removed:
+        print(f"同步完成：{len(changed)} 个文件已更新，"
+              f"{len(removed)} 个陈旧文件已删除，{len(same)} 个未变。")
     else:
         print(f"无需同步：{len(same)} 个文件与技能目录一致。")
     print("提示：技能目录是部署副本，请不要直接手改。")
