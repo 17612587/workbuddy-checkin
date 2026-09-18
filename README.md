@@ -24,7 +24,7 @@ WorkBuddy / CodeBuddy CN 每日签到 Skill，支持三字段输出：**本次�
 不想敲命令？**直接复制下面这一整段话，粘到 WorkBuddy / CodeBuddy 对话框里发送**，它会自动下载、安装并创建好每日签到自动化，一步到位：
 
 ```
-请从这个 GitHub 仓库下载并安装签到 Skill：https://github.com/17612587/workbuddy-checkin
+请从这个 GitHub 仓库下载并安装签到 Skill：https://github.com/17612587/daily-credits-checkin
 安装完成后，帮我创建一个每天早上 9 点自动执行该 Skill 签到的自动化任务（WorkBuddy 每日签到）。
 ```
 
