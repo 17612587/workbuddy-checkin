@@ -1,5 +1,5 @@
 ---
-name: workbuddy-checkin
+name: daily-credits-checkin
 display_name: WorkBuddy 每日签到
 display_name_en: WorkBuddy Daily Check-in
 description: 使用当前 WorkBuddy 或 CodeBuddy CN 账号签到（含本次获得、累计获得、当前余额三字段）。用户要求签到、打卡、check in 时使用。

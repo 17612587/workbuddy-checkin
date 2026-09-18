@@ -1,4 +1,4 @@
-# workbuddy-checkin
+# daily-credits-checkin
 
 WorkBuddy / CodeBuddy CN 每日签到 Skill，支持三字段输出：**本次签到获得 / 累计签到获得 / 当前余额**。
 
@@ -65,7 +65,7 @@ python3 <skill-directory>/scripts/workbuddy-checkin.py
 ## 文件结构
 
 ```
-workbuddy-checkin/
+daily-credits-checkin/
 ├── SKILL.md                        # 技能说明（WorkBuddy Skill 入口）
 ├── scripts/
 │   └── workbuddy-checkin.py        # 签到脚本（唯一核心文件）
